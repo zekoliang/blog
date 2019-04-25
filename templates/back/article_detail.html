@@ -1,0 +1,184 @@
+{% extends 'back/base_main.html' %}}
+
+{% block title %}
+    文章添加_博客管理系统
+{% endblock %}
+
+{% block aside %}
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="/back/index/">报告</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/back/a_type/">文章分类</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li  class="active"><a href="/back/article_list/">文章列表</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
+          <ul class="dropdown-menu" aria-labelledby="otherMenu">
+            <li><a href="/back/flink/">友情链接</a></li>
+            <li><a href="/back/loginlog/">访问记录</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">用户</a>
+          <ul class="dropdown-menu" aria-labelledby="userMenu">
+            <li><a href="#">管理用户组</a></li>
+            <li><a href="/back/manage-user/">管理用户</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/back/loginlog/">管理登录日志</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设置</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="/back/setting/">基本设置</a></li>
+            <li><a href="/back/readset/">用户设置</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">安全配置</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="disabled"><a>扩展菜单</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </aside>
+{% endblock %}
+
+{% block content %}
+     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <div class="row">
+        <form action="" method="post" class="add-article-form">
+            {{ error }}
+            <div class="col-md-9">
+            <h1 class="page-header">撰写新文章</h1>
+            <div class="form-group">
+              <label for="article-title" class="sr-only">标题</label>
+              <input type="text" id="article-title" name="name" class="form-control" placeholder="在此处输入标题" value="{{ title }}" required autofocus autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="article-content" class="sr-only">内容</label>
+              <script id="article-content" name="content" type="text/plain">
+
+
+              </script>
+            </div>
+{#            <div class="add-article-box">#}
+{#              <h2 class="add-article-box-title"><span>文章分类</span></h2>#}
+{#              <div class="add-article-box-content">#}
+{##}
+{#                        <input type="text" class="form-control" placeholder="请输入关键字" name="category" autocomplete="off">#}
+{#                        <span class="prompt-text"> textarea </span>#}
+{#                      <select name="category">#}
+{#                          {% for type in types %}#}
+{#                                <option  value="{{ type.id }}">{{ type.t_name }}</option>#}
+{#                          {% endfor %}#}
+{#                      </select>#}
+{##}
+{#              </div>#}
+{#            </div>#}
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>描述</span></h2>
+              <div class="add-article-box-content">
+              	<textarea class="form-control" name="desc" autocomplete="off">
+
+                </textarea>
+                <span class="prompt-text">描述是可选的手工创建的内容总结，并可以在网页描述中使用</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h1 class="page-header">操作</h1>
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>分类名</span></h2>
+              <div class="add-article-box-content">
+                <ul class="category-list">
+
+                    {% for type in types %}
+                  <li>
+                    <label>
+                      <input name="category" type="radio" value="{{ type.id }}">
+                            {{ type.t_name }}
+{#                            <em class="hidden-md">( 分类ID: <span>1</span> )</em>#}
+                    </label>
+                  </li>
+                    {% endfor %}
+
+{#                  <li>#}
+{#                    <label>#}
+{#                      <input name="category" type="radio" value="2">#}
+{#                      这是栏目 <em class="hidden-md">( 栏目ID: <span>2</span> )</em></label>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <label>#}
+{#                      <input name="category" type="radio" value="3" checked>#}
+{#                      这是栏目 <em class="hidden-md">( 栏目ID: <span>3</span> )</em></label>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <label>#}
+{#                      <input name="category" type="radio" value="4">#}
+{#                      这是栏目 <em class="hidden-md">( 栏目ID: <span>4</span> )</em></label>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <label>#}
+{#                      <input name="category" type="radio" value="5">#}
+{#                      这是栏目 <em class="hidden-md">( 栏目ID: <span>5</span> )</em></label>#}
+{#                  </li>#}
+                </ul>
+              </div>
+            </div>
+{#            <div class="add-article-box">#}
+{#              <h2 class="add-article-box-title"><span>标签</span></h2>#}
+{#              <div class="add-article-box-content">#}
+{#                <input type="text" class="form-control" placeholder="输入新标签" value="" name="tags" autocomplete="off">#}
+{#                <span class="prompt-text">多个标签请用英文逗号,隔开</span> </div>#}
+{#            </div>#}
+{#            <div class="add-article-box">#}
+{#              <h2 class="add-article-box-title"><span>标题图片</span></h2>#}
+{#              <div class="add-article-box-content">#}
+{#                <input type="text" class="form-control" placeholder="点击按钮选择图片" id="pictureUpload" name="titlepic" autocomplete="off">#}
+{#              </div>#}
+{#              <div class="add-article-box-footer">#}
+{#                <button class="btn btn-default" type="button" ID="upImage">选择</button>#}
+{#              </div>#}
+{#            </div>#}
+            <div class="add-article-box">
+              <h2 class="add-article-box-title"><span>发布</span></h2>
+              <div class="add-article-box-content">
+              	<p><label>状态：</label><span class="article-status-display">未发布</span></p>
+                <p><label>公开度：</label><input type="radio" name="visibility" value="0" checked/>公开 <input type="radio" name="visibility" value="1" />加密</p>
+                <p><label>发布于：</label><span class="article-time-display"><input id="time" style="border: none;" type="datetime" name="time" value="" />
+                <script>
+                    document.getElementById("time").value=new Date().toLocaleString('chinese',{hour12:false})
+                </script>
+                </span></p>
+              </div>
+              <div class="add-article-box-footer">
+                <button class="btn btn-primary" type="submit" name="submit">发布</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
+
+
+
+
+{% block js2 %}
+<script src="/static/back/js/bootstrap.min.js"></script>
+<script src="/static/back/js/admin-scripts.js"></script>
+<script src="/static/back/lib/ueditor/ueditor.config.js"></script>
+<script src="/static/back/lib/ueditor/ueditor.all.min.js"></script>
+<script src="/static/back/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script id="uploadEditor" type="text/plain" style="display:none;"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('article-content');
+    window.onresize=function(){
+        window.location.reload();
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'back/base_main.html' %}}
+
+{% block title %}
+    文章分类_博客管理系统
+{% endblock %}
+
+{% block aside %}
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="/back/index/">报告</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="/back/a_type/">文章分类</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/back/article_list/">文章列表</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a class="dropdown-toggle" id="otherMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">其他</a>
+          <ul class="dropdown-menu" aria-labelledby="otherMenu">
+            <li><a href="/back/flink/">友情链接</a></li>
+            <li><a href="/back/loginlog/">访问记录</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a class="dropdown-toggle" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">用户</a>
+          <ul class="dropdown-menu" aria-labelledby="userMenu">
+            <li><a href="#">管理用户组</a></li>
+            <li><a href="/back/manage-user/">管理用户</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/back/loginlog/">管理登录日志</a></li>
+          </ul>
+        </li>
+        <li><a class="dropdown-toggle" id="settingMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">设置</a>
+          <ul class="dropdown-menu" aria-labelledby="settingMenu">
+            <li><a href="/back/setting/">基本设置</a></li>
+            <li><a href="/back/readset/">用户设置</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">安全配置</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="disabled"><a>扩展菜单</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </aside>
+{% endblock %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-lg-10 col-md-offset-2 main" id="main">
+      <div class="row">
+
+        <form action="" method="post" class="add-article-form">
+            {{ error }}
+          <div class="col-md-9">
+            <h1 class="page-header">添加文章分类</h1>
+            <div class="form-group">
+              <label for="article-title" class="sr-only">标题</label>
+              <input type="text" id="article-title" name="atype" class="form-control" placeholder="在此处输入标题" required autofocus autocomplete="off">
+            </div>
+              <button class="btn btn-primary" type="submit" name="submit">提交</button>
+          </div>
+        </form>
+      </div>
+    </div>
+{% endblock %}
+
+{% block js2 %}
+<script src="/static/back/js/bootstrap.min.js"></script>
+<script src="/static/back/js/admin-scripts.js"></script>
+<script src="/static/back/lib/ueditor/ueditor.config.js"></script>
+<script src="/static/back/lib/ueditor/ueditor.all.min.js"></script>
+<script src="/static/back/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script id="uploadEditor" type="text/plain" style="display:none;"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('article-content');
+    window.onresize=function(){
+        window.location.reload();
+    }
+</script>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,53 @@
+
+{% extends 'web/base.main.html' %}
+{% block title %}
+    首页_曾亮个人博客 - 网站
+{% endblock %}
+{% block about_me %}
+      <div class="about_me">
+        <h2>关于我</h2>
+        <ul>
+          <i><img src="/static/web/images/touxiang.jpg"></i>
+          <p><b>曾亮</b>，一个90后少年！19年入行,开始学习python技术，正在深圳潜心修习。</p>
+        </ul>
+      </div>
+{% endblock %}
+
+{% block tuijian %}
+    <div class="tuijian">
+          <h2>站长推荐</h2>
+          <ul>
+            <li><a href="/">你是什么人便会遇上什么人</a></li>
+            <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+            <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+            <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+            <li><a href="/">你是什么人便会遇上什么人</a></li>
+            <li><a href="/">帝国cms 列表页调用子栏目，没有则不显示栏目名称</a></li>
+            <li><a href="/">第二届 优秀个人博客模板比赛参选活动</a></li>
+            <li><a href="/">个人博客模板《绅士》后台管理</a></li>
+          </ul>
+        </div>
+{% endblock %}
+
+{% block links %}
+      <div class="links">
+        <h2>友情链接</h2>
+        <ul>
+          <a href="http://www.528920894@qq.com">曾亮个人博客</a> <a href="http://www.528920894@qq.com">曾亮博客</a>
+        </ul>
+      </div>
+{% endblock %}
+
+{% block content %}
+
+    {% for article in articles %}
+        <li>
+          <h3><a href="{{ url_for('web.info', id=article.id) }}">{{ article.title }}</a></h3>
+          <p>{{ article.desc }}</p>
+        </li>
+     {% endfor %}
+
+{% endblock %}
+
+
+
