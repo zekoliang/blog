@@ -13,6 +13,11 @@ from utils.functiond import is_login, get_page
 back = Blueprint('back',__name__)
 
 
+@back.route('/creat/', methods=['GET'])
+def creat():
+    db.create_all()
+    return '创建表成功'
+
 
 # 注册
 @back.route('/register/', methods=['GET','POST'])
