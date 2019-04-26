@@ -1,3 +1,4 @@
+pymysql
 flask
 flask-script
 flask-blueprint
