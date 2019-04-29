@@ -13,8 +13,7 @@ app.register_blueprint(blueprint=back, url_prefix='/back')
 app.register_blueprint(blueprint=web, url_prefix='/web')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:zl528920894@127.0.0.1:3306/blog'
-app.config['SQLAL' \
-           'CHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['SESSION_TYPE'] = 'redis'
 app.config['SESSION_REDIS'] = redis.Redis(host='127.0.0.1',port=6379)
